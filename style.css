@@ -565,6 +565,13 @@ p {
   margin-bottom: var(--space-xl);
 }
 
+.footer-section span {
+  cursor: pointer;
+}
+.footer-section span:hover {
+  color: white;
+}
+
 .footer-section h4 {
   color: white;
   margin-bottom: var(--space-md);
