@@ -56,6 +56,10 @@ Habesha-Wear/
 
 - **Follow Guidelines:** Keep code consistent and add tests if needed.
 
+## 🚀 Live Preview
+
+👉 **https://habesha-wear.vercel.app/**
+
 ---
 
 _Designed with love for Ethiopian culture._
