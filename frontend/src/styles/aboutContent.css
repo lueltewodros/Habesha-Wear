@@ -1,0 +1,26 @@
+/* ==================== ABOUT PAGE SPECIFIC ==================== */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-xl);
+  margin-top: var(--space-2xl);
+}
+
+.value-card {
+  padding: var(--space-xl);
+  background-color: var(--color-bg);
+  border-radius: var(--border-radius);
+  text-align: center;
+  transition: var(--transition-medium);
+}
+
+.value-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.value-card h3 {
+  margin-bottom: var(--space-md);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
