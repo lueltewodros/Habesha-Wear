@@ -1,0 +1,146 @@
+/* ==================== HERO SECTION ==================== */
+.hero {
+  position: relative;
+  height: 90vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--color-bg-alt);
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.95;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.4)
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+  padding: var(--space-lg);
+}
+
+.hero-title {
+  font-size: var(--text-3xl);
+  font-weight: 300;
+  margin-bottom: var(--space-md);
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.hero-subtitle {
+  font-size: var(--text-lg);
+  color: var(--color-text-light);
+  margin-bottom: var(--space-xl);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+/* ==================== COLLECTION CARDS ==================== */
+.collections-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.collection-card {
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  background-color: var(--color-bg-alt);
+}
+
+.collection-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.collection-card:hover .collection-card-image {
+  transform: scale(1.08);
+}
+
+.collection-card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-xl);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  color: white;
+  transition: var(--transition-medium);
+}
+
+.collection-card:hover .collection-card-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+}
+
+.collection-card-title {
+  font-size: var(--text-xl);
+  font-weight: 400;
+  margin-bottom: var(--space-xs);
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.collection-card-description {
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+  .hero {
+    height: 70vh;
+  }
+  .collections-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .collection-card {
+    height: 400px;
+  }
+}
+
+/* ==================== ANIMATION DELAYS ==================== */
+.collections-grid .collection-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.collections-grid .collection-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.collections-grid .collection-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.collections-grid .collection-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
