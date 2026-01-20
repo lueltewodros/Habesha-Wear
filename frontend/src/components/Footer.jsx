@@ -42,7 +42,7 @@ export function Footer() {
             <h4>Company</h4>
             <ul className="footer-links">
               <li>
-                <Link to="/about">About Us</Link>
+                <Link to="/about#">About Us</Link>
               </li>
               <li>
                 <Link to="/#contact">Contact</Link>
