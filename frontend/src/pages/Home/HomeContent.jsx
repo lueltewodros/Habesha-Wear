@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../../styles/homeContent.css";
 
 export function HomeContent() {
@@ -15,9 +16,9 @@ export function HomeContent() {
           <p className="hero-subtitle">
             Authentic Habesha fashion celebrating our rich cultural heritage
           </p>
-          <a href="shop.html" className="btn btn-primary">
+          <Link to="shop.html" className="btn btn-primary">
             Shop Now
-          </a>
+          </Link>
         </div>
       </section>
 
@@ -31,7 +32,7 @@ export function HomeContent() {
           </div>
 
           <div className="collections-grid">
-            <a href="shop.html?#women" className="collection-card">
+            <Link to="/shop#women" className="collection-card">
               <img
                 src="images/womens_collection_ethiopian_1764321499330.png"
                 alt="Women's Habesha Kemis"
@@ -45,9 +46,9 @@ export function HomeContent() {
                   Traditional dresses with vibrant tilf embroidery
                 </p>
               </div>
-            </a>
+            </Link>
 
-            <a href="shop.html?#men" className="collection-card">
+            <Link to="/shop#men" className="collection-card">
               <img
                 src="images/mens_collection_ethiopian_1764321518701.png"
                 alt="Men's Traditional Wear"
@@ -58,12 +59,12 @@ export function HomeContent() {
                   Habesha Clothes for Men
                 </h3>
                 <p className="collection-card-description">
-                  classNameic suits with cultural embroidery
+                  classic suits with cultural embroidery
                 </p>
               </div>
-            </a>
+            </Link>
 
-            <a href="shop.html?#shoes" className="collection-card">
+            <Link to="/shop#shoes" className="collection-card">
               <img
                 src="images/product_shoes_3_1764243980505.png"
                 alt="Traditional Shoes"
@@ -75,9 +76,9 @@ export function HomeContent() {
                   Leather shoes with Ethiopian craftsmanship
                 </p>
               </div>
-            </a>
+            </Link>
 
-            <a href="shop.html?#bags" className="collection-card">
+            <Link to="/shop#bags" className="collection-card">
               <img
                 src="images/accessories_ethiopian_1764321535281.png"
                 alt="Traditional Bags"
@@ -89,8 +90,8 @@ export function HomeContent() {
                   Handwoven baskets and luxury bags
                 </p>
               </div>
-            </a>
-            <a href="shop.html?#jewellery" className="collection-card">
+            </Link>
+            <Link to="/shop#jewellery" className="collection-card">
               <img
                 src="images/jewellery-1.jpg"
                 alt="Ethiopian Jewelry"
@@ -102,8 +103,8 @@ export function HomeContent() {
                   Cultural necklaces, pendants, and handcrafted gold pieces
                 </p>
               </div>
-            </a>
-            <a href="shop.html?#kids-cloth" className="collection-card">
+            </Link>
+            <Link to="/shop#kids-cloth" className="collection-card">
               <img
                 src="images/kids_habesha_collection.jpg"
                 alt="Kids Habesha Clothes"
@@ -115,7 +116,7 @@ export function HomeContent() {
                   Cute traditional outfits for children
                 </p>
               </div>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -137,9 +138,9 @@ export function HomeContent() {
                 verified partners and local markets who share our commitment to
                 quality and tradition.
               </p>
-              <a href="about.html" className="btn btn-outline">
+              <Link to="about.html" className="btn btn-outline">
                 Learn More About Us
-              </a>
+              </Link>
             </div>
             <img
               src="images/product_dress_ethiopian_1764321552887.png"
