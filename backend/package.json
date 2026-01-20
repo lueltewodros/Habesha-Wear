@@ -1,23 +1,20 @@
 {
-  "name": "backend",
+  "name": "habesha-wear-backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "type": "module",
+  "description": "Native Node.js backend for Habesha-Wear",
+  "main": "src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
   "dependencies": {
-    "bcrypt": "^6.0.0",
-    "cookie-parser": "^1.4.7",
-    "dotenv": "^17.2.3",
-    "express": "^5.2.1",
-    "joi": "^18.0.2",
-    "joi-objectid": "^4.0.2",
-    "jsonwebtoken": "^9.0.3",
-    "mongoose": "^9.1.1"
+    "dotenv": "^16.4.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
   }
 }
