@@ -5,9 +5,21 @@ import { Product } from "./Product";
 
 export function Products() {
   const [products, setProducts] = useState([]);
+  const [category, setCategory] = useState("all");
   useEffect(() => {
     fetchProducts().then((data) => setProducts(data));
   }, []);
+
+  const filteredProducts = products.filter((product) => {
+    if (category === "all") {
+      return true;
+    }
+    return product.category.toLowerCase() === category;
+  });
+
+  function handleCategoryChange(e) {
+    setCategory(e.target.value);
+  }
 
   return (
     <main>
@@ -21,17 +33,73 @@ export function Products() {
           </div>
 
           <div className="category-filters">
-            <button className="filter-btn active">All</button>
-            <button className="filter-btn">Women's Kemis</button>
-            <button className="filter-btn">Men's Traditional</button>
-            <button className="filter-btn">Shoes</button>
-            <button className="filter-btn">Bags</button>
-            <button className="filter-btn">Jewellery</button>
-            <button className="filter-btn">Kid's Cloth</button>
+            <button
+              className={
+                category === "all" ? "filter-btn active" : "filter-btn"
+              }
+              value="all"
+              onClick={handleCategoryChange}
+            >
+              All
+            </button>
+            <button
+              className={
+                category === "women" ? "filter-btn active" : "filter-btn"
+              }
+              value="women"
+              onClick={handleCategoryChange}
+            >
+              Women's Kemis
+            </button>
+            <button
+              className={
+                category === "men" ? "filter-btn active" : "filter-btn"
+              }
+              value="men"
+              onClick={handleCategoryChange}
+            >
+              Men's Traditional
+            </button>
+            <button
+              className={
+                category === "shoes" ? "filter-btn active" : "filter-btn"
+              }
+              value="shoes"
+              onClick={handleCategoryChange}
+            >
+              Shoes
+            </button>
+            <button
+              className={
+                category === "bags" ? "filter-btn active" : "filter-btn"
+              }
+              value="bags"
+              onClick={handleCategoryChange}
+            >
+              Bags
+            </button>
+            <button
+              className={
+                category === "jewellery" ? "filter-btn active" : "filter-btn"
+              }
+              value="jewellery"
+              onClick={handleCategoryChange}
+            >
+              Jewellery
+            </button>
+            <button
+              className={
+                category === "kids-cloth" ? "filter-btn active" : "filter-btn"
+              }
+              value="kids-cloth"
+              onClick={handleCategoryChange}
+            >
+              Kid's Cloth
+            </button>
           </div>
 
           <div className="products-grid" id="productsGrid">
-            {products.map((product) => (
+            {filteredProducts.map((product) => (
               <Product product={product} key={product._id} />
             ))}
           </div>
