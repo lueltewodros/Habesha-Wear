@@ -47,3 +47,43 @@ export const createProduct = async (req, res) => {
     }
   }
 };
+
+export const updateProductStock = async (req, res) => {
+  try {
+    const data = await getRequestBody(req);
+    const { id, stock } = data;
+
+    if (!id || stock === undefined) {
+      res.writeHead(400, { "Content-Type": "application/json" });
+      res.end(
+        JSON.stringify({ error: "Product ID and Stock amount are required" }),
+      );
+      return;
+    }
+
+    const updatedProduct = await Product.findByIdAndUpdate(
+      id,
+      { stock },
+      { new: true, runValidators: true },
+    );
+
+    if (!updatedProduct) {
+      res.writeHead(404, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: "Product not found" }));
+      return;
+    }
+
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(
+      JSON.stringify({
+        message: "Stock updated successfully",
+        product: updatedProduct,
+      }),
+    );
+  } catch (error) {
+    res.writeHead(400, { "Content-Type": "application/json" });
+    res.end(
+      JSON.stringify({ error: "Error updating stock", details: error.message }),
+    );
+  }
+};

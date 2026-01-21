@@ -1,7 +1,7 @@
 import http from "http";
 import "dotenv/config";
 import connectDB from "./config/db.js";
-import { createProduct } from "./routes/product.js";
+import { createProduct, updateProductStock } from "./routes/product.js";
 
 // Connect to Database
 connectDB();
@@ -27,6 +27,8 @@ const server = http.createServer(async (req, res) => {
   // Basic Routing
   if (req.url === "/api/products" && req.method === "POST") {
     await createProduct(req, res);
+  } else if (req.url === "/api/products/stock" && req.method === "PUT") {
+    await updateProductStock(req, res);
   } else {
     res.writeHead(404, { "Content-Type": "application/json" });
     res.end(JSON.stringify({ error: "Route not found" }));
