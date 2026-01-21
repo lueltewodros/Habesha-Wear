@@ -23,7 +23,7 @@ export function Products() {
 
   return (
     <main>
-      <section className="section shop-section" style="padding-top: 6rem">
+      <section className="section shop-section" style={{paddingTop: "6rem"}}>
         <div className="container">
           <div className="section-header text-center">
             <h1 className="section-title">Shop Our Collection</h1>

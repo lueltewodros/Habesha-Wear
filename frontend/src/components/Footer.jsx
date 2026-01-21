@@ -18,22 +18,7 @@ export function Footer() {
             <h4>Shop</h4>
             <ul className="footer-links">
               <li>
-                <Link to="/shop#women">Women's Kemis</Link>
-              </li>
-              <li>
-                <Link to="/shop#men">Men's Traditional</Link>
-              </li>
-              <li>
-                <Link to="/shop#shoes">Shoes</Link>
-              </li>
-              <li>
-                <Link to="/shop#bags">Bags</Link>
-              </li>
-              <li>
-                <Link to="/shop#jewellery">Jewellery</Link>
-              </li>
-              <li>
-                <Link to="/shop#kids-cloth">Kids Cloth</Link>
+                <Link to="/shop">Explore Collection</Link>
               </li>
             </ul>
           </div>
