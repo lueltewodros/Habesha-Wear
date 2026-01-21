@@ -1,9 +1,14 @@
 import http from "http";
 import "dotenv/config";
+import connectDB from "./config/db.js";
+import { createProduct } from "./routes/product.js";
+
+// Connect to Database
+connectDB();
 
 const PORT = process.env.PORT || 5000;
 
-const server = http.createServer((req, res) => {
+const server = http.createServer(async (req, res) => {
   // CORS Headers
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
@@ -20,9 +25,8 @@ const server = http.createServer((req, res) => {
   }
 
   // Basic Routing
-  if (req.url === "/api/health" && req.method === "GET") {
-    res.writeHead(200, { "Content-Type": "application/json" });
-    res.end(JSON.stringify({ status: "OK", message: "Backend is running" }));
+  if (req.url === "/api/products" && req.method === "POST") {
+    await createProduct(req, res);
   } else {
     res.writeHead(404, { "Content-Type": "application/json" });
     res.end(JSON.stringify({ error: "Route not found" }));
