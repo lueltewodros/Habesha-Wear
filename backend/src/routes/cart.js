@@ -1,5 +1,7 @@
 import Cart from "../models/Cart";
 
+import Product from "../models/Product";
+
 export const getCart = async (req, res) => {
   try {
     let cart = await Cart.findOne().populate("items.productId");
@@ -12,3 +14,67 @@ export const getCart = async (req, res) => {
     res.status(500).json({ message: "Server Error", error });
   }
 };
+
+// Add to cart with quantity logic
+
+// Helper to parse JSON body from request
+const getRequestBody = (req) => {
+  return new Promise((resolve, reject) => {
+    let body = "";
+    req.on("data", (chunk) => {
+      body += chunk.toString();
+    });
+    req.on("end", () => {
+      try {
+        resolve(JSON.parse(body || "{}"));
+      } catch (err) {
+        reject(err);
+      }
+    });
+  });
+};
+
+export const addToCart = async (req, res) => {
+  try {
+    const data = await getRequestBody(req);
+    const { productId, quantity } = data;
+    if (!productId || !quantity || quantity < 1) {
+      res.writeHead(400, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ message: "Invalid product or quantity" }));
+      return;
+    }
+
+    // Optionally: check if product exists
+    const product = await Product.findById(productId);
+    if (!product) {
+      res.writeHead(404, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ message: "Product not found" }));
+      return;
+    }
+
+    let cart = await Cart.findOne();
+    if (!cart) {
+      cart = new Cart({ items: [] });
+    }
+
+    const itemIndex = cart.items.findIndex(
+      (item) => item.productId.toString() === productId,
+    );
+    if (itemIndex > -1) {
+      // Product exists in cart, increase quantity
+      cart.items[itemIndex].quantity += quantity;
+    } else {
+      // Add new product to cart
+      cart.items.push({ productId, quantity });
+    }
+
+    await cart.save();
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(JSON.stringify(cart));
+  } catch (error) {
+    res.writeHead(500, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({ message: "Server Error", error }));
+  }
+};
+
+export default cartHandler;
