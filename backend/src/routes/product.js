@@ -87,3 +87,20 @@ export const updateProductStock = async (req, res) => {
     );
   }
 };
+
+export const returnProducts = async (req, res) => {
+  try {
+    const products = await Product.find();
+
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(JSON.stringify(products));
+  } catch (error) {
+    res.writeHead(500, { "Content-Type": "application/json" });
+    res.end(
+      JSON.stringify({
+        error: "Error fetching products",
+        details: error.message,
+      }),
+    );
+  }
+};
