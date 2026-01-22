@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/cartContent.css";
-import { fetchCart } from "../../app";
+import { addToCart, fetchCart } from "../../app";
 
 export function CartContent() {
   const [cartItems, setCartItems] = useState([]);
@@ -11,14 +11,13 @@ export function CartContent() {
   }, []);
 
   // This only updates local state for now
-  const updateQuantity = (productId, delta) => {
-    setCartItems((items) =>
-      items.map((item) =>
-        item.productId && item.productId._id === productId
-          ? { ...item, quantity: Math.max(1, item.quantity + delta) }
-          : item,
-      ),
-    );
+  const updateQuantity = async (productId, delta) => {
+    try {
+      const data = await addToCart(productId, delta);
+      setCartItems(data.items || []);
+    } catch (err) {
+      console.error("Failed to update quantity:", err);
+    }
   };
 
   const removeItem = (productId) => {

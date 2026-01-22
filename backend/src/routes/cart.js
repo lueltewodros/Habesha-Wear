@@ -62,7 +62,13 @@ export const addToCart = async (req, res) => {
     );
     if (itemIndex > -1) {
       // Product exists in cart, increase quantity
-      cart.items[itemIndex].quantity += quantity;
+      const intermediateQuantity = cart.items[itemIndex].quantity + quantity;
+      if (intermediateQuantity < 1) {
+        // Remove item if quantity goes below 1
+        cart.items.splice(itemIndex, 1);
+      } else {
+        cart.items[itemIndex].quantity = intermediateQuantity;
+      }
     } else {
       // Add new product to cart
       cart.items.push({ productId, quantity });
