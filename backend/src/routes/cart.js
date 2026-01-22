@@ -1,6 +1,6 @@
-import Cart from "../models/Cart";
+import Cart from "../models/Cart.js";
 
-import Product from "../models/Product";
+import Product from "../models/Product.js";
 
 export const getCart = async (req, res) => {
   try {
@@ -76,5 +76,3 @@ export const addToCart = async (req, res) => {
     res.end(JSON.stringify({ message: "Server Error", error }));
   }
 };
-
-export default cartHandler;
