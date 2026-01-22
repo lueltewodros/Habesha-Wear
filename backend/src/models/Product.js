@@ -23,8 +23,8 @@ const productSchema = new mongoose.Schema({
   },
   stock: {
     type: Number,
+    required: [true, "Product stock is required"],
     min: 0,
-    default: 0,
   },
   createdAt: {
     type: Date,
