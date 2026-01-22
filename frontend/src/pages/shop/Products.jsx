@@ -23,7 +23,7 @@ export function Products() {
 
   return (
     <main>
-      <section className="section shop-section" style={{paddingTop: "6rem"}}>
+      <section className="section shop-section" style={{ paddingTop: "6rem" }}>
         <div className="container">
           <div className="section-header text-center">
             <h1 className="section-title">Shop Our Collection</h1>
@@ -89,9 +89,9 @@ export function Products() {
             </button>
             <button
               className={
-                category === "kids-cloth" ? "filter-btn active" : "filter-btn"
+                category === "kids" ? "filter-btn active" : "filter-btn"
               }
-              value="kids-cloth"
+              value="kids"
               onClick={handleCategoryChange}
             >
               Kid's Cloth

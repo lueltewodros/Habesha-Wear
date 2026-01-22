@@ -6,10 +6,6 @@ const productSchema = new mongoose.Schema({
     required: [true, "Product name is required"],
     trim: true,
   },
-  description: {
-    type: String,
-    required: [true, "Product description is required"],
-  },
   price: {
     type: Number,
     required: [true, "Product price is required"],
@@ -17,7 +13,9 @@ const productSchema = new mongoose.Schema({
   },
   category: {
     type: String,
+    enum: ["women", "men", "shoes", "bags", "jewellery", "kids"],
     required: [true, "Product category is required"],
+    trim: true,
   },
   images: {
     type: [String],
@@ -25,6 +23,7 @@ const productSchema = new mongoose.Schema({
   },
   stock: {
     type: Number,
+    min: 0,
     default: 0,
   },
   createdAt: {
