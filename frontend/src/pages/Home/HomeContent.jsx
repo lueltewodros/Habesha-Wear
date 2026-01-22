@@ -16,7 +16,7 @@ export function HomeContent() {
           <p className="hero-subtitle">
             Authentic Habesha fashion celebrating our rich cultural heritage
           </p>
-          <Link to="shop.html" className="btn btn-primary">
+          <Link to="/shop" className="btn btn-primary">
             Shop Now
           </Link>
         </div>
