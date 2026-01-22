@@ -82,3 +82,36 @@ export const addToCart = async (req, res) => {
     res.end(JSON.stringify({ message: "Server Error", error }));
   }
 };
+
+export const removeFromCart = async (req, res) => {
+  try {
+    const data = await getRequestBody(req);
+    const { productId } = data;
+    if (!productId) {
+      res.writeHead(400, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ message: "Invalid product" }));
+      return;
+    }
+
+    let cart = await Cart.findOne();
+    if (!cart) {
+      res.writeHead(404, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ message: "Cart not found" }));
+      return;
+    }
+
+    const itemIndex = cart.items.findIndex(
+      (item) => item.productId.toString() === productId,
+    );
+    if (itemIndex > -1) {
+      cart.items.splice(itemIndex, 1);
+      await cart.save();
+    }
+
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(JSON.stringify(cart));
+  } catch (error) {
+    res.writeHead(500, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({ message: "Server Error", error }));
+  }
+};

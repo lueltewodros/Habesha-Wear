@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/cartContent.css";
-import { addToCart, fetchCart } from "../../app";
+import { addToCart, fetchCart, removeFromCart } from "../../app";
 
 export function CartContent() {
   const [cartItems, setCartItems] = useState([]);
@@ -12,20 +12,13 @@ export function CartContent() {
 
   // This only updates local state for now
   const updateQuantity = async (productId, delta) => {
-    try {
-      const data = await addToCart(productId, delta);
-      setCartItems(data.items || []);
-    } catch (err) {
-      console.error("Failed to update quantity:", err);
-    }
+    const data = await addToCart(productId, delta);
+    setCartItems(data.items || []);
   };
 
-  const removeItem = (productId) => {
-    setCartItems((items) =>
-      items.filter(
-        (item) => !(item.productId && item.productId._id === productId),
-      ),
-    );
+  const removeItem = async (productId) => {
+    const data = await removeFromCart(productId);
+    setCartItems(data.items || []);
   };
 
   const subtotal = cartItems.reduce(

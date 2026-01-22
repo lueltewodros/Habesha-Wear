@@ -24,3 +24,14 @@ export async function addToCart(productId, quantity) {
   const data = await res.json();
   return data;
 }
+export async function removeFromCart(productId) {
+  const res = await fetch(`${api}/cart/remove`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ productId }),
+  });
+  const data = await res.json();
+  return data;
+}
