@@ -9,9 +9,12 @@ export const getCart = async (req, res) => {
       cart = new Cart({ items: [] });
       await cart.save();
     }
-    res.status(200).json(cart);
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(JSON.stringify(cart));
   } catch (error) {
-    res.status(500).json({ message: "Server Error", error });
+    console.error("Cart Error:", error);
+    res.writeHead(500, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({ message: "Server Error", error: error.message }));
   }
 };
 

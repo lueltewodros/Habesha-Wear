@@ -21,9 +21,8 @@ const CartSchema = new mongoose.Schema({
   },
 });
 
-CartSchema.pre("save", function (next) {
+CartSchema.pre("save", async function () {
   this.updatedAt = Date.now();
-  next();
 });
 
 const Cart = mongoose.model("Cart", CartSchema);
