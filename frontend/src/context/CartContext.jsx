@@ -30,8 +30,8 @@ export function CartProvider({ children }) {
 
   const addToCart = async (productId, quantity) => {
     try {
-      await apiAddToCart(productId, quantity);
-      const data = await fetchCart();
+      const data = await apiAddToCart(productId, quantity);
+      console.log(data);
       setCartItems(data.items || []);
     } catch (error) {
       console.error("Error adding to cart:", error);

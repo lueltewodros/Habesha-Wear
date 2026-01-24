@@ -78,6 +78,7 @@ export const addToCart = async (req, res) => {
     }
 
     await cart.save();
+    await cart.populate("items.productId");
     res.writeHead(200, { "Content-Type": "application/json" });
     res.end(JSON.stringify(cart));
   } catch (error) {
