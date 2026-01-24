@@ -1,4 +1,5 @@
 import { FaShoppingCart } from "react-icons/fa";
+import { addToCart } from "../../app.js";
 
 export function Product({ product }) {
   return (
@@ -9,7 +10,11 @@ export function Product({ product }) {
           alt={product.name}
           className="product-image"
         />
-        <button className="add-to-cart-btn" aria-label="Add to cart">
+        <button
+          className="add-to-cart-btn"
+          aria-label="Add to cart"
+          onClick={() => addToCart(product._id, 1)}
+        >
           <FaShoppingCart />
         </button>
       </div>
