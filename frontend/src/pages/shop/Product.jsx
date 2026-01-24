@@ -1,3 +1,5 @@
+import { FaShoppingCart } from "react-icons/fa";
+
 export function Product({ product }) {
   return (
     <div className="product-card">
@@ -7,6 +9,9 @@ export function Product({ product }) {
           alt={product.name}
           className="product-image"
         />
+        <button className="add-to-cart-btn" aria-label="Add to cart">
+          <FaShoppingCart />
+        </button>
       </div>
       <div className="product-info">
         <h3 className="product-name">{product.name}</h3>
