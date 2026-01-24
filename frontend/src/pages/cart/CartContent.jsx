@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { FaTrash } from "react-icons/fa";
 import "../../styles/cartContent.css";
 import { useCart } from "../../context/CartContext.jsx";
 
@@ -77,19 +78,21 @@ export function CartContent() {
                     +
                   </button>
                 </div>
-
-                <button
-                  className="remove-btn"
-                  onClick={() => removeFromCart(item.productId?._id)}
-                >
-                  Remove Item
-                </button>
               </div>
               <div className="cart-item-total" style={{ fontWeight: 600 }}>
                 {item.productId?.price &&
                   (item.productId.price * item.quantity).toLocaleString()}{" "}
                 ETB
               </div>
+
+              <button
+                className="remove-btn"
+                onClick={() => removeFromCart(item.productId?._id)}
+                aria-label="Remove item"
+              >
+                <FaTrash />
+                <span className="remove-text">Remove</span>
+              </button>
             </div>
           ))}
         </div>
