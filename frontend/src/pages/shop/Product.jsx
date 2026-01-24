@@ -1,7 +1,9 @@
 import { FaShoppingCart } from "react-icons/fa";
-import { addToCart } from "../../app.js";
+import { useCart } from "../../context/CartContext.jsx";
 
 export function Product({ product }) {
+  const { addToCart } = useCart();
+
   return (
     <div className="product-card">
       <div className="product-image-wrapper">

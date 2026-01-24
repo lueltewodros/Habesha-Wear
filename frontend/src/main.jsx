@@ -4,13 +4,16 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
 import ScrollToTop from "./utils/ScrollToTop.jsx";
 import ScrollToHash from "./utils/ScrollToHash.jsx";
+import { CartProvider } from "./context/CartContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <BrowserRouter>
-      <ScrollToTop />
-      <ScrollToHash />
-      <App />
-    </BrowserRouter>
-  </StrictMode>
+    <CartProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <ScrollToHash />
+        <App />
+      </BrowserRouter>
+    </CartProvider>
+  </StrictMode>,
 );

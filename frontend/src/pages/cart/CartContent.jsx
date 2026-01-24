@@ -1,25 +1,14 @@
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/cartContent.css";
-import { addToCart, fetchCart, removeFromCart } from "../../app";
+import { useCart } from "../../context/CartContext.jsx";
 
 export function CartContent() {
-  const [cartItems, setCartItems] = useState([]);
+  const { cartItems, removeFromCart, updateQuantity } = useCart();
 
-  useEffect(() => {
-    fetchCart().then((data) => setCartItems(data.items || []));
-  }, []);
-
-  // This only updates local state for now
-  const updateQuantity = async (productId, delta) => {
-    const data = await addToCart(productId, delta);
-    setCartItems(data.items || []);
-  };
-
-  const removeItem = async (productId) => {
-    const data = await removeFromCart(productId);
-    setCartItems(data.items || []);
-  };
+  // Helper wrappers are no longer needed if we use context methods directly in onClick,
+  // but keeping them for consistent function signatures if preferred, or simplifying.
+  // Context updateQuantity signature matches: (productId, delta)
+  // Context removeFromCart signature matches: (productId)
 
   const subtotal = cartItems.reduce(
     (acc, item) =>
@@ -91,7 +80,7 @@ export function CartContent() {
 
                 <button
                   className="remove-btn"
-                  onClick={() => removeItem(item.productId?._id)}
+                  onClick={() => removeFromCart(item.productId?._id)}
                 >
                   Remove Item
                 </button>
