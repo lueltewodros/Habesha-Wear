@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { FaTrash } from "react-icons/fa";
 import "../../styles/cartContent.css";
-import { useCart } from "../../context/CartContext.jsx";
+import { useCart } from "../../context/CartContext.js";
 
 export function CartContent() {
   const { cartItems, removeFromCart, updateQuantity } = useCart();

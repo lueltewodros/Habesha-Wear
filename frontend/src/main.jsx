@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
 import ScrollToTop from "./utils/ScrollToTop.jsx";
 import ScrollToHash from "./utils/ScrollToHash.jsx";
-import { CartProvider } from "./context/CartContext.jsx";
+import { CartProvider } from "./context/CartProvider.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

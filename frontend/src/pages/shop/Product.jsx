@@ -1,8 +1,16 @@
-import { FaShoppingCart } from "react-icons/fa";
-import { useCart } from "../../context/CartContext.jsx";
+import { FaShoppingCart, FaCheck } from "react-icons/fa";
+import { useCart } from "../../context/CartContext.js";
+import { useState } from "react";
 
 export function Product({ product }) {
   const { addToCart } = useCart();
+  const [isAdded, setIsAdded] = useState(false);
+
+  const handleAddToCart = async () => {
+    await addToCart(product._id, 1);
+    setIsAdded(true);
+    setTimeout(() => setIsAdded(false), 2000);
+  };
 
   return (
     <div className="product-card">
@@ -13,11 +21,12 @@ export function Product({ product }) {
           className="product-image"
         />
         <button
-          className="add-to-cart-btn"
-          aria-label="Add to cart"
-          onClick={() => addToCart(product._id, 1)}
+          className={`add-to-cart-btn ${isAdded ? "success" : ""}`}
+          aria-label={isAdded ? "Added to cart" : "Add to cart"}
+          onClick={handleAddToCart}
+          disabled={isAdded}
         >
-          <FaShoppingCart />
+          {isAdded ? <FaCheck /> : <FaShoppingCart />}
         </button>
       </div>
       <div className="product-info">

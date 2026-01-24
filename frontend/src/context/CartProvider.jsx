@@ -1,15 +1,10 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import CartContext from "./CartContext";
 import {
   fetchCart,
   addToCart as apiAddToCart,
   removeFromCart as apiRemoveFromCart,
 } from "../app";
-
-const CartContext = createContext();
-
-export function useCart() {
-  return useContext(CartContext);
-}
 
 export function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
