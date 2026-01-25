@@ -37,11 +37,11 @@ const getRequestBody = (req) => {
   });
 };
 
-export const addToCart = async (req, res) => {
+export const modifyCart = async (req, res) => {
   try {
     const data = await getRequestBody(req);
     const { productId, quantity } = data;
-    if (!productId || !quantity || quantity < 1) {
+    if (!productId || !quantity) {
       res.writeHead(400, { "Content-Type": "application/json" });
       res.end(JSON.stringify({ message: "Invalid product or quantity" }));
       return;
@@ -49,6 +49,7 @@ export const addToCart = async (req, res) => {
 
     // Optionally: check if product exists
     const product = await Product.findById(productId);
+
     if (!product) {
       res.writeHead(404, { "Content-Type": "application/json" });
       res.end(JSON.stringify({ message: "Product not found" }));

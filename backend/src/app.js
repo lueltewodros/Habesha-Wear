@@ -6,7 +6,7 @@ import {
   updateProductStock,
   returnProducts,
 } from "./routes/product.js";
-import { getCart, addToCart } from "./routes/cart.js";
+import { getCart, modifyCart } from "./routes/cart.js";
 
 // Connect to Database
 connectDB();
@@ -34,8 +34,8 @@ const server = http.createServer(async (req, res) => {
     await returnProducts(req, res);
   } else if (req.url === "/api/cart" && req.method === "GET") {
     await getCart(req, res);
-  } else if (req.url === "/api/cart/add" && req.method === "POST") {
-    await addToCart(req, res);
+  } else if (req.url === "/api/cart" && req.method === "POST") {
+    await modifyCart(req, res);
   } else if (req.url === "/api/products" && req.method === "POST") {
     await createProduct(req, res);
   } else if (req.url === "/api/products/stock" && req.method === "PUT") {

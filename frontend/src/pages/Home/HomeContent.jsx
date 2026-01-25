@@ -138,7 +138,7 @@ export function HomeContent() {
                 verified partners and local markets who share our commitment to
                 quality and tradition.
               </p>
-              <Link to="about.html" className="btn btn-outline">
+              <Link to="/about" className="btn btn-outline">
                 Learn More About Us
               </Link>
             </div>

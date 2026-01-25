@@ -14,7 +14,7 @@ export async function fetchCart() {
 }
 
 export async function addToCart(productId, quantity) {
-  const res = await fetch(`${api}/cart/add`, {
+  const res = await fetch(`${api}/cart`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
