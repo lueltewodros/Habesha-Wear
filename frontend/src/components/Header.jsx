@@ -37,6 +37,14 @@ export function Header() {
               Cart
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to="/orders"
+              className={({ isActive }) => returnActive(isActive)}
+            >
+              Orders
+            </NavLink>
+          </li>
         </ul>
       </div>
     </nav>
