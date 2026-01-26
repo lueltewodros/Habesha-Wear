@@ -120,3 +120,18 @@ export const removeFromCart = async (req, res) => {
     res.end(JSON.stringify({ message: "Server Error", error }));
   }
 };
+
+export const clearCart = async (req, res) => {
+  try {
+    let cart = await Cart.findOne();
+    if (cart) {
+      cart.items = [];
+      await cart.save();
+    }
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(JSON.stringify(cart || { items: [] }));
+  } catch (error) {
+    res.writeHead(500, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({ message: "Server Error", error }));
+  }
+};
