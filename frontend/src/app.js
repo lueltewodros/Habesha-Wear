@@ -47,3 +47,9 @@ export async function clearCartAPI() {
   const data = await res.json();
   return data;
 }
+
+export async function fetchOrders() {
+  const res = await fetch(`${api}/orders`);
+  const data = await res.json();
+  return data;
+}

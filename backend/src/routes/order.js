@@ -49,3 +49,15 @@ export const createOrder = async (req, res) => {
     res.end(JSON.stringify({ message: "Server Error", error: error.message }));
   }
 };
+export const getOrders = async (req, res) => {
+  try {
+    // Ideally filter by user, but assuming single user/global for now as per current auth state
+    const orders = await Order.find().sort({ createdAt: -1 });
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(JSON.stringify(orders));
+  } catch (error) {
+    console.error("Get Orders Error:", error);
+    res.writeHead(500, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({ message: "Server Error", error: error.message }));
+  }
+};

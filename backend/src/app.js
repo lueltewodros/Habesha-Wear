@@ -12,7 +12,7 @@ import {
   clearCart,
   removeFromCart,
 } from "./routes/cart.js";
-import { createOrder } from "./routes/order.js";
+import { createOrder, getOrders } from "./routes/order.js";
 
 // Connect to Database
 connectDB();
@@ -52,6 +52,8 @@ const server = http.createServer(async (req, res) => {
     await updateProductStock(req, res);
   } else if (req.url === "/api/orders" && req.method === "POST") {
     await createOrder(req, res);
+  } else if (req.url === "/api/orders" && req.method === "GET") {
+    await getOrders(req, res);
   } else {
     res.writeHead(404, { "Content-Type": "application/json" });
     res.end(JSON.stringify({ error: "Route not found" }));
