@@ -118,7 +118,17 @@ export function CartContent() {
             </div>
           </div>
 
-          <button className="checkout-btn">Proceed to Checkout</button>
+          <Link
+            to="/checkout"
+            className="checkout-btn"
+            style={{
+              display: "block",
+              textAlign: "center",
+              textDecoration: "none",
+            }}
+          >
+            Proceed to Checkout
+          </Link>
 
           <p
             style={{

@@ -4,6 +4,7 @@ import {
   fetchCart,
   addToCart as apiAddToCart,
   removeFromCart as apiRemoveFromCart,
+  clearCartAPI,
 } from "../app";
 
 export function CartProvider({ children }) {
@@ -48,11 +49,21 @@ export function CartProvider({ children }) {
     await addToCart(productId, delta);
   };
 
+  const clearCart = async () => {
+    try {
+      const data = await clearCartAPI();
+      setCartItems(data.items || []);
+    } catch (error) {
+      console.error("Error clearing cart:", error);
+    }
+  };
+
   const value = {
     cartItems,
     addToCart,
     removeFromCart,
     updateQuantity,
+    clearCart,
     loading,
   };
 
