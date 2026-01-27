@@ -4,7 +4,7 @@ import "../../styles/cartContent.css";
 import { useCart } from "../../context/CartContext.js";
 
 export function CartContent() {
-  const { cartItems, removeFromCart, updateQuantity } = useCart();
+  const { cartItems, removeFromCart, updateQuantity, clearCart } = useCart();
 
   // Helper wrappers are no longer needed if we use context methods directly in onClick,
   // but keeping them for consistent function signatures if preferred, or simplifying.
@@ -38,7 +38,43 @@ export function CartContent() {
 
   return (
     <div className="container cart-container">
-      <h1 className="cart-title">Your Shopping Cart</h1>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginBottom: "1rem",
+        }}
+      >
+        <h1 className="cart-title" style={{ marginBottom: 0 }}>
+          Your Shopping Cart
+        </h1>
+        {cartItems.length > 0 && (
+          <button
+            onClick={() => clearCart()}
+            style={{
+              backgroundColor: "transparent",
+              color: "#dc3545",
+              border: "1px solid #dc3545",
+              padding: "0.5rem 1rem",
+              borderRadius: "4px",
+              cursor: "pointer",
+              fontSize: "0.9rem",
+              transition: "all 0.2s",
+            }}
+            onMouseOver={(e) => {
+              e.target.style.backgroundColor = "#dc3545";
+              e.target.style.color = "white";
+            }}
+            onMouseOut={(e) => {
+              e.target.style.backgroundColor = "transparent";
+              e.target.style.color = "#dc3545";
+            }}
+          >
+            Clear Cart
+          </button>
+        )}
+      </div>
 
       <div className="cart-layout">
         <div className="cart-items-list">

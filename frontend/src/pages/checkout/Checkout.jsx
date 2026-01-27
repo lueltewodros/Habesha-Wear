@@ -73,10 +73,12 @@ export function Checkout() {
       }
 
       // Order successful
-      // TODO: Clear cart (need to implement clearCart in context if not exists)
-      // clearing cart manually for now via context if available, or just redirecting
+      // Order successful
+      // clearCart(); // Removed as per request to move it to cart page (interpreting "move from orders" as removing here)
 
       navigate("/", { state: { message: "Order placed successfully!" } });
+
+      clearCart();
     } catch (err) {
       console.error("Checkout error:", err);
       setError(err.message);
