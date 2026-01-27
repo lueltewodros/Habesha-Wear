@@ -100,6 +100,19 @@ export function Checkout() {
 
   return (
     <div className="container checkout-container">
+      <Link
+        to="/cart"
+        className="back-link"
+        style={{
+          display: "inline-block",
+          marginBottom: "1rem",
+          color: "var(--color-primary)",
+          textDecoration: "none",
+          fontWeight: 500,
+        }}
+      >
+        &larr; Back to Cart
+      </Link>
       <h1 className="checkout-title">Checkout</h1>
 
       <div className="checkout-layout">

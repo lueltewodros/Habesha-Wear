@@ -52,7 +52,9 @@ export const createOrder = async (req, res) => {
 export const getOrders = async (req, res) => {
   try {
     // Ideally filter by user, but assuming single user/global for now as per current auth state
-    const orders = await Order.find().sort({ createdAt: -1 });
+    const orders = await Order.find()
+      .sort({ createdAt: -1 })
+      .populate("items.productId");
     res.writeHead(200, { "Content-Type": "application/json" });
     res.end(JSON.stringify(orders));
   } catch (error) {

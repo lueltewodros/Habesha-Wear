@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { fetchOrders } from "../../app";
 import { Header } from "../../components/Header";
 import "../../styles/orders.css";
@@ -43,6 +44,18 @@ export function Orders() {
           {orders.length === 0 ? (
             <div className="no-orders">
               <p>You haven't placed any orders yet.</p>
+              <Link
+                to="/shop"
+                className="continue-shopping-btn"
+                style={{
+                  display: "inline-block",
+                  marginTop: "1rem",
+                  color: "var(--color-primary)",
+                  textDecoration: "underline",
+                }}
+              >
+                Start Shopping
+              </Link>
             </div>
           ) : (
             <div className="orders-list">
@@ -66,22 +79,35 @@ export function Orders() {
                   <div className="order-items">
                     {order.items.map((item, index) => (
                       <div key={index} className="order-item">
-                        {/* Assuming populated, but currently not populated in backend getOrders. 
-                         If not populated, we might show ID or name if stored. 
-                         Let's assume name isn't stored in item unless we populated or stored snapshot.
-                         Wait, Order schema doesn't store Product snapshots beyond price/qty.
-                         Without populate, we can't show names. 
-                         Let's update backend to populate first, or handle it gracefully.
-                         For now displaying basic info.
-                     */}
-                        <div className="item-details">
-                          <span className="item-quantity">
-                            {item.quantity}x
-                          </span>
-                          {/* Placeholder for product name if not available */}
-                          <span className="item-name">
-                            Product ID: {item.productId}
-                          </span>
+                        <div
+                          className="item-details"
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "1rem",
+                          }}
+                        >
+                          {item.productId?.images?.[0] && (
+                            <img
+                              src={item.productId.images[0]}
+                              alt={item.productId.name}
+                              style={{
+                                width: "50px",
+                                height: "50px",
+                                objectFit: "cover",
+                                borderRadius: "4px",
+                              }}
+                            />
+                          )}
+                          <div>
+                            <span className="item-quantity">
+                              {item.quantity}x
+                            </span>
+                            <span className="item-name">
+                              {item.productId?.name ||
+                                `Product ID: ${item.productId?._id || item.productId}`}
+                            </span>
+                          </div>
                         </div>
                         <div className="item-price">
                           {item.price.toLocaleString()} ETB
