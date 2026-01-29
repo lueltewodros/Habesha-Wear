@@ -32,7 +32,7 @@ export function HomeContent() {
           </div>
 
           <div className="collections-grid">
-            <Link to="/shop#women" className="collection-card">
+            <Link to="/shop" className="collection-card">
               <img
                 src="images/womens_collection_ethiopian_1764321499330.png"
                 alt="Women's Habesha Kemis"
@@ -48,7 +48,7 @@ export function HomeContent() {
               </div>
             </Link>
 
-            <Link to="/shop#men" className="collection-card">
+            <Link to="/shop" className="collection-card">
               <img
                 src="images/mens_collection_ethiopian_1764321518701.png"
                 alt="Men's Traditional Wear"
@@ -64,7 +64,7 @@ export function HomeContent() {
               </div>
             </Link>
 
-            <Link to="/shop#shoes" className="collection-card">
+            <Link to="/shop" className="collection-card">
               <img
                 src="images/product_shoes_3_1764243980505.png"
                 alt="Traditional Shoes"
@@ -78,7 +78,7 @@ export function HomeContent() {
               </div>
             </Link>
 
-            <Link to="/shop#bags" className="collection-card">
+            <Link to="/shop" className="collection-card">
               <img
                 src="images/accessories_ethiopian_1764321535281.png"
                 alt="Traditional Bags"
@@ -91,7 +91,7 @@ export function HomeContent() {
                 </p>
               </div>
             </Link>
-            <Link to="/shop#jewellery" className="collection-card">
+            <Link to="/shop" className="collection-card">
               <img
                 src="images/jewellery-1.jpg"
                 alt="Ethiopian Jewelry"
@@ -104,7 +104,7 @@ export function HomeContent() {
                 </p>
               </div>
             </Link>
-            <Link to="/shop#kids-cloth" className="collection-card">
+            <Link to="/shop" className="collection-card">
               <img
                 src="images/kids_habesha_collection.jpg"
                 alt="Kids Habesha Clothes"
