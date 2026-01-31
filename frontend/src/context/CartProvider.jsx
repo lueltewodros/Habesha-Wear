@@ -27,7 +27,6 @@ export function CartProvider({ children }) {
   const addToCart = async (productId, quantity) => {
     try {
       const data = await apiAddToCart(productId, quantity);
-      console.log(data);
       setCartItems(data.items || []);
     } catch (error) {
       console.error("Error adding to cart:", error);
